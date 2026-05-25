@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Agrinho 2026</title>
 
     <style>
+
+        body{
+            background-color: #ececec;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         header{
-            background-color: #183C63;
-            color: #FFFF;
+            background-color: #895129;
+            color: #F5E6D3;
             text-align: center;
+
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px;
-            border: 5px solid #ff0000;
+
+            padding: 20px;
+
+            border: 5px solid #2E6F40;
         }
 
         main{
-            background-color: #FFFF;
-            color: #183C63;
+            background-color: #F5E6D3;
+            color: #000000;
+
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px;
+
+            padding: 20px;
+        }
+
+        article{
             display: flex;
             gap: 20px;
-            align-items: center;
+
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+
+            border-bottom: 2px solid #d4c2ae;
         }
 
         img{
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
         }
 
         .artigo-autor{
@@ -37,44 +60,120 @@
         }
 
         button{
-            padding: 8px 12px;
+            padding: 10px 14px;
+
             margin-right: 10px;
+            margin-top: 10px;
+
             cursor: pointer;
+
+            background-color: #F5E6D3;
+
+            border: 2px solid #2E6F40;
+
+            color: #2E6F40;
+
+            border-radius: 8px;
+
+            transition: 0.3s;
         }
+
+        button:hover{
+            background-color: #2E6F40;
+            color: white;
+        }
+
     </style>
+
 </head>
 
 <body>
 
     <header>
-        <h1>Meu blog tech</h1>
-        <p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
+
+        <h1>Agrinho 2026 🌱</h1>
+
+        <p>
+            Sustentabilidade, tecnologia e inovação no agro
+        </p>
+
     </header>
 
     <main>
-        <img src="imagem-blog.jpg" alt="Logotipo conceitual de tecnologia e educação">
 
-        <div>
-            <h2>Meu primeiro post</h2>
+        <article>
 
-            <p class="artigo-autor">Por: Cássio</p>
+            <img src="imagem-blog.jpg"
+            alt="Imagem sobre sustentabilidade no agro">
 
-            <p>
-                Boas-vindas ao meu blog! Aqui vou compartilhar dicas de
-                programação e curiosidades da área de tecnologia.
-            </p>
+            <div>
 
-            <button>
-                👍 <span>0</span>
-            </button>
+                <h2>Venha visitar o Agrinho 2026</h2>
 
-            <button>
-                👎 <span>0</span>
-            </button>
-        </div>
+                <p class="artigo-autor">
+                    Por: Cássio
+                </p>
+
+                <p>
+                    O Agrinho 2026 chegou trazendo inovação,
+                    sustentabilidade e muito conhecimento
+                    para toda a comunidade! 🌱🚜
+                </p>
+
+                <p>
+                    📅 Dias 16 e 17 de Maio <br>
+                    📍 Maringá - PR
+                </p>
+
+                <button>
+                    👍 <span>0</span>
+                </button>
+
+                <button>
+                    👎 <span>0</span>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <img src="imagem-blog.jpg"
+            alt="Imagem sobre tecnologia e sustentabilidade">
+
+            <div>
+
+                <h2>Imagem criada para o Agrinho</h2>
+
+                <p class="artigo-autor">
+                    Por: Cássio
+                </p>
+
+                <p>
+                    Essa imagem representa sustentabilidade,
+                    natureza e tecnologia trabalhando juntas
+                    para um futuro melhor 🌿
+                </p>
+
+                <button>
+                    👍 <span>0</span>
+                </button>
+
+                <button>
+                    👎 <span>0</span>
+                </button>
+
+            </div>
+
+        </article>
+
     </main>
 
+
     <script>
+
         const botoes = document.querySelectorAll("button");
 
         botoes.forEach(function(botao){
@@ -83,14 +182,16 @@
 
             function botaoClicado(){
 
-                console.log("fui clicado");
-
                 let texto = botao.querySelector("span");
 
                 texto.textContent++;
+
             }
+
         });
+
     </script>
 
 </body>
+
 </html>
