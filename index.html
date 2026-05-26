@@ -171,7 +171,7 @@
 
         <article>
 
-            <img src="Setup perfeito.webp"
+            <img src="setup1.jpg"
             alt="Setup gamer neon roxo com RGB">
 
             <div>
@@ -188,24 +188,8 @@
                     tudo com iluminação RGB.
                 </p>
 
-                <p>
-                    Monte seu setup ideal com
-                    visual futurista e cheio
-                    de tecnologia.
-                </p>
-
-                <p>
-                    💻 RGB Personalizado <br>
-                    🎧 Equipamentos Premium <br>
-                    🖥️ Setup dos sonhos
-                </p>
-
-                <button>
+                <button class="like">
                     👍 <span>0</span>
-                </button>
-
-                <button>
-                    👎 <span>0</span>
                 </button>
 
             </div>
@@ -215,7 +199,7 @@
 
         <article>
 
-            <img src="setup.jpg"
+            <img src="setup2.jpg"
             alt="Quarto gamer moderno com neon azul">
 
             <div>
@@ -231,24 +215,8 @@
                     compare setups e salve seus favoritos.
                 </p>
 
-                <p>
-                    Crie um espaço gamer único
-                    com muito estilo cyberpunk
-                    e iluminação neon.
-                </p>
-
-                <p>
-                    🚀 Modo Setup dos Sonhos <br>
-                    🌈 Luzes RGB <br>
-                    🎮 Visual Cyberpunk
-                </p>
-
-                <button>
+                <button class="like">
                     👍 <span>0</span>
-                </button>
-
-                <button>
-                    👎 <span>0</span>
                 </button>
 
             </div>
@@ -267,19 +235,42 @@
 
     <script>
 
-        const botoes = document.querySelectorAll("button");
+        const botoes = document.querySelectorAll(".like");
 
         botoes.forEach(function(botao){
 
-            botao.addEventListener("click", botaoClicado);
+            let curtido = false;
 
-            function botaoClicado(){
+            botao.addEventListener("click", function(){
 
                 let texto = botao.querySelector("span");
 
-                texto.textContent++;
+                let numero = Number(texto.textContent);
 
-            }
+                if(curtido == false){
+
+                    numero++;
+
+                    texto.textContent = numero;
+
+                    curtido = true;
+
+                    botao.style.background =
+                    "linear-gradient(90deg, #00ff99, #00e5ff)";
+
+                }else{
+
+                    numero--;
+
+                    texto.textContent = numero;
+
+                    curtido = false;
+
+                    botao.style.background =
+                    "linear-gradient(90deg, #ff00ff, #00e5ff)";
+                }
+
+            });
 
         });
 
