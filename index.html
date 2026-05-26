@@ -192,6 +192,10 @@
                     👍 <span>0</span>
                 </button>
 
+                <button class="deslike">
+                    👎 <span>0</span>
+                </button>
+
             </div>
 
         </article>
@@ -219,6 +223,10 @@
                     👍 <span>0</span>
                 </button>
 
+                <button class="deslike">
+                    👎 <span>0</span>
+                </button>
+
             </div>
 
         </article>
@@ -235,9 +243,12 @@
 
     <script>
 
-        const botoes = document.querySelectorAll(".like");
+        const likes = document.querySelectorAll(".like");
+        const deslikes = document.querySelectorAll(".deslike");
 
-        botoes.forEach(function(botao){
+
+
+        likes.forEach(function(botao){
 
             let curtido = false;
 
@@ -265,6 +276,46 @@
                     texto.textContent = numero;
 
                     curtido = false;
+
+                    botao.style.background =
+                    "linear-gradient(90deg, #ff00ff, #00e5ff)";
+                }
+
+            });
+
+        });
+
+
+
+
+        deslikes.forEach(function(botao){
+
+            let descurtido = false;
+
+            botao.addEventListener("click", function(){
+
+                let texto = botao.querySelector("span");
+
+                let numero = Number(texto.textContent);
+
+                if(descurtido == false){
+
+                    numero++;
+
+                    texto.textContent = numero;
+
+                    descurtido = true;
+
+                    botao.style.background =
+                    "linear-gradient(90deg, #ff0000, #ff6600)";
+
+                }else{
+
+                    numero--;
+
+                    texto.textContent = numero;
+
+                    descurtido = false;
 
                     botao.style.background =
                     "linear-gradient(90deg, #ff00ff, #00e5ff)";
