@@ -62,6 +62,8 @@ article {
     padding: 20px;
 
     box-shadow: 0px 0px 20px #7b2cbf44;
+
+    flex: 1 1 25%;
 }
 
 img {
