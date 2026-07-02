@@ -49,20 +49,20 @@ article {
 
     display: flex;
 
-    gap: 30px;
+    gap: 16px;
 
-    margin-bottom: 40px;
+    margin-bottom: 16px;
 
     background-color: #0d021b;
 
-    border: 2px solid #7b2cbf;
+    border: 1px solid #7b2cbf;
 
     border-radius: 15px;
 
-    padding: 20px;
+    padding: 16px;
 
-    box-shadow: 0px 0px 20px #7b2cbf44;
-
+    flex-direction: column;
+    
     flex: 1 1 25%;
 }
 
