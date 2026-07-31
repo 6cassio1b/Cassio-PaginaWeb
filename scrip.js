@@ -1,82 +1,45 @@
+const likes=document.querySelectorAll(".like");
+const deslikes=document.querySelectorAll(".deslike");
 
-const likes = document.querySelectorAll(".like");
-const deslikes = document.querySelectorAll(".deslike");
-
-
-
-likes.forEach(function (botao) {
-
-    let curtido = false;
-
-    botao.addEventListener("click", function () {
-
-        let texto = botao.querySelector("span");
-
-        let numero = Number(texto.textContent);
-
-        if (curtido == false) {
-
-            numero++;
-
-            texto.textContent = numero;
-
-            curtido = true;
-
-            botao.style.background =
-                "linear-gradient(90deg, #00ff99, #00e5ff)";
-
-        } else {
-
-            numero--;
-
-            texto.textContent = numero;
-
-            curtido = false;
-
-            botao.style.background =
-                "linear-gradient(90deg, #ff00ff, #00e5ff)";
-        }
-
-    });
-
+likes.forEach(function(botao){
+let curtido=false;
+botao.addEventListener("click",function(){
+let texto=botao.querySelector("span");
+let numero=Number(texto.textContent);
+if(!curtido){
+texto.textContent=numero+1;
+curtido=true;
+}else{
+texto.textContent=numero-1;
+curtido=false;
+}
+});
 });
 
-
-
-
-deslikes.forEach(function (botao) {
-
-    let descurtido = false;
-
-    botao.addEventListener("click", function () {
-
-        let texto = botao.querySelector("span");
-
-        let numero = Number(texto.textContent);
-
-        if (descurtido == false) {
-
-            numero++;
-
-            texto.textContent = numero;
-
-            descurtido = true;
-
-            botao.style.background =
-                "linear-gradient(90deg, #ff0000, #ff6600)";
-
-        } else {
-
-            numero--;
-
-            texto.textContent = numero;
-
-            descurtido = false;
-
-            botao.style.background =
-                "linear-gradient(90deg, #ff00ff, #00e5ff)";
-        }
-
-    });
-
+deslikes.forEach(function(botao){
+let descurtido=false;
+botao.addEventListener("click",function(){
+let texto=botao.querySelector("span");
+let numero=Number(texto.textContent);
+if(!descurtido){
+texto.textContent=numero+1;
+descurtido=true;
+}else{
+texto.textContent=numero-1;
+descurtido=false;
+}
 });
+});
+
+const btnTemaEscuro=document.querySelector(".btn-tema-escuro");
+
+btnTemaEscuro.addEventListener("click",mudaTema);
+
+function mudaTema(){
+const corpo=document.body;
+if(corpo.classList.contains("tema-escuro")){
+corpo.classList.remove("tema-escuro");
+}else{
+corpo.classList.add("tema-escuro");
+}
+}
