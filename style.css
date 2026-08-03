@@ -4,11 +4,10 @@
   --cor-fundo: #f4f0ff;
   --cor-titulo: #6d28d9;
   --cor-subtitulo: #27272a;
-  --cor-botao: #7c3aed;
   --cor-contraste: #00c8ff;
   --cor-texto: #18181b;
   --cor-borda: #e4dcff;
-  --cor-texto-botao: #ffffff; /* Corrigido o erro de digitação de "bortao" e ajustado para branco */
+  --cor-texto-botao: #ffffff;
 }
 
 .tema-escuro {
@@ -17,42 +16,125 @@
   --cor-fundo: #221a2b;
   --cor-titulo: #c084fc;
   --cor-subtitulo: #ffffff;
-  --cor-botao: #7c3aed;
-  --cor-contraste: #00c8ff;
+  --cor-contraste: #7c3aed;
   --cor-borda: #09060d;
   --cor-texto: #ffffff;
-  --cor-texto-botao: #18111f; /* No tema escuro, o texto do botão fica escuro */
+  --cor-texto-botao: #18111f;
 }
 
-/* ... mantenha suas outras regras de body, header, main, article, img igual ... */
+* {
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-/* Ajuste na regra dos botões para aceitar bem as variáveis */
+body {
+  max-width: 100vw;
+  background-color: var(--cor-borda);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  background-color: var(--cor-primaria);
+  color: var(--cor-titulo);
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+header p {
+  color: var(--cor-subtitulo);
+}
+
+main {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+article {
+  display: flex;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: var(--cor-primaria);
+  padding: 16px;
+  flex: 1 1 calc(33.333% - 20px);
+  min-width: 300px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-top: 4px solid var(--cor-secundaria);
+  border-radius: 8px;
+}
+
+img {
+  width: 100%;
+  max-width: 320px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+h2 {
+  font-size: 24px;
+  color: var(--cor-titulo);
+  margin: 15px 0 5px 0;
+}
+
+.artigo-autor {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--cor-subtitulo);
+}
+
 button {
   padding: 10px 15px;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 10px 5px 0 5px;
   cursor: pointer;
-  background-color: var(--cor-secundaria); /* Usa a cor roxa/azul como fundo */
+  background-color: var(--cor-secundaria);
   border: 2px solid var(--cor-secundaria);
-  color: var(--cor-texto-botao); /* Texto com alto contraste */
+  color: var(--cor-texto-botao);
   border-radius: 10px;
-  transition: 0.3s;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
 button:hover {
   background-color: var(--cor-contraste);
   border-color: var(--cor-contraste);
-  color: #18181b; /* Texto escuro no hover para melhor leitura */
+  color: #18181b;
 }
 
 .btn-tema-escuro {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  font-size: 32px;
-  padding: 12px;
+  bottom: 20px;
+  right: 20px;
+  font-size: 28px;
+  padding: 10px;
   background-color: var(--cor-primaria);
+  border: 2px solid var(--cor-secundaria);
   border-radius: 50%;
-  border: 1px solid var(--cor-borda);
-  color: var(--cor-texto);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-titulo);
+  text-align: center;
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 8px;
 }

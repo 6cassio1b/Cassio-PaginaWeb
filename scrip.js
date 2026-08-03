@@ -1,51 +1,46 @@
-const likes = document.querySelectorAll(".like");
-const deslikes = document.querySelectorAll(".deslike");
+// Seleciona todos os botões de Like e Deslike
+const botoesLike = document.querySelectorAll(".like");
+const botoesDeslike = document.querySelectorAll(".deslike");
 
-likes.forEach(function(botao) {
+// Configura os Likes
+botoesLike.forEach(function(botao) {
   botao.addEventListener("click", function() {
-    let texto = botao.querySelector("span");
-    let numero = Number(texto.textContent);
+    let contador = botao.querySelector("span");
+    let numero = Number(contador.textContent);
     
-    // Verifica se este botão específico já foi clicado
-    if (botao.dataset.curtido !== "true") {
-      texto.textContent = numero + 1;
-      botao.dataset.curtido = "true";
-      botao.style.opacity = "0.7"; // Efeito visual opcional de ativo
+    if (!botao.classList.contains("ativo")) {
+      contador.textContent = numero + 1;
+      botao.classList.add("ativo");
+      botao.style.backgroundColor = "var(--cor-contraste)";
     } else {
-      texto.textContent = numero - 1;
-      botao.dataset.curtido = "false";
-      botao.style.opacity = "1";
+      contador.textContent = numero - 1;
+      botao.classList.remove("ativo");
+      botao.style.backgroundColor = "";
     }
   });
 });
 
-deslikes.forEach(function(botao) {
+// Configura os Deslikes
+botoesDeslike.forEach(function(botao) {
   botao.addEventListener("click", function() {
-    let texto = botao.querySelector("span");
-    let numero = Number(texto.textContent);
+    let contador = botao.querySelector("span");
+    let numero = Number(contador.textContent);
     
-    // Verifica se este botão específico já foi clicado
-    if (botao.dataset.descurtido !== "true") {
-      texto.textContent = numero + 1;
-      botao.dataset.descurtido = "true";
-      botao.style.opacity = "0.7";
+    if (!botao.classList.contains("ativo")) {
+      contador.textContent = numero + 1;
+      botao.classList.add("ativo");
+      botao.style.backgroundColor = "var(--cor-contraste)";
     } else {
-      texto.textContent = numero - 1;
-      botao.dataset.descurtido = "false";
-      botao.style.opacity = "1";
+      contador.textContent = numero - 1;
+      botao.classList.remove("ativo");
+      botao.style.backgroundColor = "";
     }
   });
 });
 
-// Controle do Tema Escuro (Perfeito, não precisou mexer)
+// Controle do Tema Escuro
 const btnTemaEscuro = document.querySelector(".btn-tema-escuro");
-btnTemaEscuro.addEventListener("click", mudaTema);
 
-function mudaTema() {
-  const corpo = document.body;
-  if (corpo.classList.contains("tema-escuro")) {
-    corpo.classList.remove("tema-escuro");
-  } else {
-    corpo.classList.add("tema-escuro");
-  }
-}
+btnTemaEscuro.addEventListener("click", function() {
+  document.body.classList.toggle("tema-escuro");
+});
