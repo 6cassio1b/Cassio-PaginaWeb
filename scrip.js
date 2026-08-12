@@ -1,45 +1,44 @@
-// Função genérica para alternar contagem e classe
-function alternarBotao(botao, botaoOposto) {
-  let contador = botao.querySelector("span");
-  let numero = Number(contador.textContent);
-  
-  // Se o botão oposto (ex: deslike) estiver ativo, remove o estado dele
+// Função para alternar entre Like e Deslike
+function alternarVoto(botaoClicado, botaoOposto) {
+  const contadorClicado = botaoClicado.querySelector("span");
+  let numClicado = Number(contadorClicado.textContent);
+
+  // Se o outro botão estava ativo, desativa e diminui a contagem dele
   if (botaoOposto && botaoOposto.classList.contains("ativo")) {
-    let contadorOposto = botaoOposto.querySelector("span");
+    const contadorOposto = botaoOposto.querySelector("span");
     contadorOposto.textContent = Number(contadorOposto.textContent) - 1;
     botaoOposto.classList.remove("ativo");
   }
 
-  // Alterna o estado do botão atual
-  if (!botao.classList.contains("ativo")) {
-    contador.textContent = numero + 1;
-    botao.classList.add("ativo");
+  // Alterna o estado do botão clicado
+  if (!botaoClicado.classList.contains("ativo")) {
+    contadorClicado.textContent = numClicado + 1;
+    botaoClicado.classList.add("ativo");
   } else {
-    contador.textContent = numero - 1;
-    botao.classList.remove("ativo");
+    contadorClicado.textContent = numClicado - 1;
+    botaoClicado.classList.remove("ativo");
   }
 }
 
-// Configura Likes e Deslikes vinculados ao mesmo pai/container
-const botoesLike = document.querySelectorAll(".like");
+// Associa os eventos de cada artigo
+const artigos = document.querySelectorAll("article");
 
-botoesLike.forEach(function(botaoLike) {
-  // Encontra o botão de deslike do mesmo card/container
-  const container = botaoLike.parentElement;
-  const botaoDeslike = container.querySelector(".deslike");
+artigos.forEach(function(artigo) {
+  const btnLike = artigo.querySelector(".like");
+  const btnDeslike = artigo.querySelector(".deslike");
 
-  botaoLike.addEventListener("click", function() {
-    alternarBotao(botaoLike, botaoDeslike);
-  });
+  if (btnLike && btnDeslike) {
+    btnLike.addEventListener("click", function() {
+      alternarVoto(btnLike, btnDeslike);
+    });
 
-  if (botaoDeslike) {
-    botaoDeslike.addEventListener("click", function() {
-      alternarBotao(botaoDeslike, botaoLike);
+    btnDeslike.addEventListener("click", function() {
+      alternarVoto(btnDeslike, btnLike);
     });
   }
 });
 
-// Controle do Tema Escuro com validação
+// Alternância de Tema Escuro
 const btnTemaEscuro = document.querySelector(".btn-tema-escuro");
 
 if (btnTemaEscuro) {
