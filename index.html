@@ -1,103 +1,48 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Setup Gamer</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-<h1>🎮 Setup Gamer</h1>
-<p>Computadores, periféricos, iluminação e os melhores setups gamers</p>
-</header>
-<main>
+// Função para alternar entre Like e Deslike
+function alternarVoto(botaoClicado, botaoOposto) {
+  const contadorClicado = botaoClicado.querySelector("span");
+  let numClicado = Number(contadorClicado.textContent);
 
-<article>
-<img src="setup1.jpg" alt="Setup gamer com computador e iluminação RGB">
-<div>
-<h2>Meu Setup Gamer 🎮</h2>
-<p class="artigo-autor">Por: Cássio</p>
-<p>Um bom setup gamer combina desempenho, conforto e organização para melhorar a experiência durante os jogos.</p>
-<p>Computador, monitor e periféricos precisam trabalhar juntos para oferecer uma jogabilidade mais confortável.</p>
-<p>🖥️ Monitor<br>⌨️ Teclado<br>🖱️ Mouse</p>
-<button class="like">👍 <span>0</span></button>
-<button class="deslike">👎 <span>0</span></button>
-</div>
-</article>
+  // Se o outro botão estava ativo, desativa e diminui a contagem dele
+  if (botaoOposto && botaoOposto.classList.contains("ativo")) {
+    const contadorOposto = botaoOposto.querySelector("span");
+    contadorOposto.textContent = Number(contadorOposto.textContent) - 1;
+    botaoOposto.classList.remove("ativo");
+  }
 
-<article>
-<img src="setup2.jpg" alt="Setup gamer com iluminação RGB">
-<div>
-<h2>Setup RGB 🌈</h2>
-<p class="artigo-autor">Por: Cássio</p>
-<p>A iluminação RGB deixa o ambiente mais moderno e permite personalizar o setup com diferentes cores e efeitos.</p>
-<p>Fitas de LED, teclados iluminados e gabinetes com RGB ajudam a criar um visual gamer.</p>
-<p>🌈 Iluminação<br>✨ Personalização<br>🎮 Estilo gamer</p>
-<button class="like">👍 <span>0</span></button>
-<button class="deslike">👎 <span>0</span></button>
-</div>
-</article>
+  // Alterna o estado do botão clicado
+  if (!botaoClicado.classList.contains("ativo")) {
+    contadorClicado.textContent = numClicado + 1;
+    botaoClicado.classList.add("ativo");
+  } else {
+    contadorClicado.textContent = numClicado - 1;
+    botaoClicado.classList.remove("ativo");
+  }
+}
 
-<article>
-<img src="setup3.jpg" alt="Setup gamer com três monitores">
-<div>
-<h2>Setup com 3 Monitores 🖥️</h2>
-<p class="artigo-autor">Por: Cássio</p>
-<p>Usar vários monitores aumenta o espaço disponível para jogos, transmissões e programas.</p>
-<p>Esse tipo de setup é bastante utilizado por jogadores, streamers e criadores de conteúdo.</p>
-<p>🖥️ Três telas<br>🎥 Transmissões<br>⚙️ Produtividade</p>
-<button class="like">👍 <span>0</span></button>
-<button class="deslike">👎 <span>0</span></button>
-</div>
-</article>
+// Associa os eventos de cada <article>
+const artigos = document.querySelectorAll("article");
 
-<article>
-<img src="setup4.jpg" alt="Setup gamer branco">
-<div>
-<h2>Setup White Edition ⚪</h2>
-<p class="artigo-autor">Por: Cássio</p>
-<p>O setup branco possui um visual limpo e moderno, combinando gabinete, teclado, mouse e acessórios da mesma cor.</p>
-<p>A iluminação RGB pode ser usada para destacar os equipamentos e personalizar o ambiente.</p>
-<p>⚪ Visual branco<br>✨ Organização<br>🖥️ Design moderno</p>
-<button class="like">👍 <span>0</span></button>
-<button class="deslike">👎 <span>0</span></button>
-</div>
-</article>
+artigos.forEach(function(artigo) {
+  const btnLike = artigo.querySelector(".like");
+  const btnDeslike = artigo.querySelector(".deslike");
 
-<article>
-<img src="setup5.jpg" alt="Setup gamer para streamer">
-<div>
-<h2>Setup para Streamers 🎥</h2>
-<p class="artigo-autor">Por: Cássio</p>
-<p>Um setup para transmissões precisa de computador, microfone, câmera e uma conexão estável com a internet.</p>
-<p>Também é importante organizar os equipamentos para manter o ambiente confortável durante as lives.</p>
-<p>🎙️ Microfone<br>📷 Câmera<br>🎥 Streaming</p>
-<button class="like">👍 <span>0</span></button>
-<button class="deslike">👎 <span>0</span></button>
-</div>
-</article>
+  if (btnLike && btnDeslike) {
+    btnLike.addEventListener("click", function() {
+      alternarVoto(btnLike, btnDeslike);
+    });
 
-<article>
-<img src="setup6.jpg" alt="Setup gamer completo e moderno">
-<div>
-<h2>Setup dos Sonhos 🚀</h2>
-<p class="artigo-autor">Por: Cássio</p>
-<p>Um setup completo pode reunir um computador potente, monitor de alta frequência e periféricos de qualidade.</p>
-<p>O mais importante é montar o ambiente de acordo com suas necessidades e com o espaço disponível.</p>
-<p>🚀 Desempenho<br>🎧 Periféricos<br>🪑 Conforto</p>
-<button class="like">👍 <span>0</span></button>
-<button class="deslike">👎 <span>0</span></button>
-</div>
-</article>
+    btnDeslike.addEventListener("click", function() {
+      alternarVoto(btnDeslike, btnLike);
+    });
+  }
+});
 
-<button class="btn-tema-escuro">🌓</button>
-</main>
+// Alternância de Tema Escuro
+const btnTemaEscuro = document.querySelector(".btn-tema-escuro");
 
-<footer>
-🎮 "Jogue, evolua e monte o setup dos seus sonhos."
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+if (btnTemaEscuro) {
+  btnTemaEscuro.addEventListener("click", function() {
+    document.body.classList.toggle("tema-escuro");
+  });
+}
